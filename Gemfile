@@ -16,6 +16,7 @@ gem "rack-cors"
 gem "rails", "~> 5.2.1"
 gem "rails-admin"
 gem "redis", "~> 4.0"
+gem "travis"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
