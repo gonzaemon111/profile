@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(arcticle_params)
+    @article = Article.new(article_params)
     if @article.save
       render json: @article, status: :created
     else
@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    if @article.update
+    if @article.update(article_params)
       render json: @article, status: 200
     else
       render json: @article.errors.full_messages, status: :unprocessable_entity
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def arcticle_params
+  def article_params
     params.require(:article).permit(
       :title,
       :content
