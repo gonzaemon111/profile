@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def set_aricle
     @article = Article.find(params[:article_id])
   end
