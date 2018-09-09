@@ -1,0 +1,21 @@
+language: ruby
+
+services:
+  - mysql
+
+bundler_args: "--without development --jobs=3"
+
+cache: bundler
+
+# before_script:
+#   - mysql -uroot < db/schema.sql
+
+script:
+  - bundle install
+  - bundle exec rails db:create
+  - bundle exec rails db:schema:load
+  - bundle exec rspec --color --require spec_helper --format progress spec
+  - bundle exec rubocop
+
+notifications:
+  slack: for-my-work-space:LlVPMalPCclBl6gMXgJxtlVR
